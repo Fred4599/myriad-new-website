@@ -1,25 +1,23 @@
-# John New Website
+# Myriad New Website
 
-Astro site for Myriad Marketing & Advertising.
+Community Card / Myriad – Astro + Tailwind marketing site.
 
-## Development
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Runs the app in `astro-site/` at `http://localhost:4321`.
+Open [http://localhost:4321](http://localhost:4321).
 
 ## Build
 
 ```bash
 npm run build
+npm run preview   # preview production build
 ```
 
-## Deploy to Vercel
+## Deploy (Vercel)
 
-1. Push this repo to GitHub.
-2. In [Vercel](https://vercel.com), import the repository.
-3. **Set Root Directory to `astro-site`** (Vercel → Project → Settings → General).
-4. Deploy. Build command and output are already set in `astro-site/vercel.json`.
+Repo root is the app. Connect this repo in Vercel; no Root Directory change needed. Build uses `npm run build` and output `dist/`.

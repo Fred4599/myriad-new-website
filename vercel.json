@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build --prefix astro-site",
-  "outputDirectory": "astro-site/dist",
-  "installCommand": "npm install --prefix astro-site",
-  "framework": null
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "astro",
+  "installCommand": "npm install"
 }
