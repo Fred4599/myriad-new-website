@@ -1,0 +1,595 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+
+// Replace with your actual scheduling/calendar link (e.g. Calendly)
+const CALENDAR_URL = '#calendar';
+const PHONE = '507-458-9852';
+const PHONE_TEL = 'tel:5074589852';
+const EMAIL = 'info@myriadincinc.com';
+const SERVICE_AREA = 'Seven County Twin City Metro Area';
+
+const howItWorksSteps = [
+  { step: '01', title: '15 Minute Meeting', description: 'Reserve a time/day to discuss your business goals, current strategy, and timeline.', icon: 'calendar', cta: true },
+  { step: '02', title: 'We Research It', description: 'Our team does a deep dive into your digital footprint, industry, competition, and future trends.', icon: 'search' },
+  { step: '03', title: 'We Meet You 1:1', description: 'Relationships are everything. This no-obligation, zero-pressure meet and greet lets both of us vet each other, while giving you a written game plan from us to grow your business while getting your life back.', icon: 'users' },
+  { step: '04', title: 'Industry Exclusive Option', description: "If we both decide to partner up, we can make sure we're also not working for your competitors.", icon: 'shield' },
+];
+
+const pricingTier1 = {
+  label: 'Most Popular',
+  price: '$50',
+  period: 'a month',
+  features: ['Professional design included', 'Hyperlocal targeted marketing', 'Weekly performance insights', 'No long-term contracts'],
+};
+const pricingTier2 = {
+  label: 'A La Carte',
+  price: '$200',
+  period: 'a month',
+  features: ['Google Business Profile optimization', 'SEO, social media, branding', 'CRM integration and automation', 'Reputation management'],
+};
+
+// 14 feature/service cards for "Why This Works" – description may include HTML (underline/caps)
+const featureCards = [
+  { title: 'Why Myriad', titleAllCaps: false, description: 'In Myriad, we have a wide variety of products, services and advice our clients used to achieve their goals. Each client\'s package is unique and customized from a "myriad of options."', icon: 'sparkles' },
+  { title: 'Networking', titleAllCaps: false, description: 'Think BNI, but without the <u>big monthly expense</u> and online meetings versus carving out in-person lead sharing times at a local venue.', icon: 'users' },
+  { title: "Megan's Mailers", titleAllCaps: false, description: 'Beautifully designed <strong class="uppercase">JUMBO</strong> postcards that go to 2,500 homes in towns and suburbs around the Twin City Metro every month.', icon: 'mail' },
+  { title: 'Cash Register Receipt Tape Coupons', titleAllCaps: false, description: 'Trackable coupons given to 20,000+ shoppers each and every month at the local grocery stores of your choice.', icon: 'receipt' },
+  { title: 'Shopping Cart Advertising', titleAllCaps: false, description: 'Billboard top-of-mind mini billboards in stores that have 15,000+ monthly shoppers.', icon: 'shopping-cart' },
+  { title: 'Geofencing', titleAllCaps: false, description: 'Make sure every time a potential customer searches for <u>your industry near me</u>, that your business is at the top of a hyper local search.', icon: 'map-pin' },
+  { title: 'Reputation Management', titleAllCaps: false, description: 'Bad reviews suck, especially from keyboard warriors who never even let you know they were disappointed. We stop these from going public, allowing you to fix the situation and create a customer for life.', icon: 'shield-check' },
+  { title: 'SEO and Website Optimization', titleAllCaps: false, description: 'Professional SEO and website optimization to help your business rank higher in search results and convert more visitors into customers.', icon: 'search' },
+  { title: 'Social Media', titleAllCaps: false, description: 'What would your day/week look like if all your posts and comment replies were automated? One customer told us they got 10 hours back of their life every week.', icon: 'share-2' },
+  { title: 'Special Boards', titleAllCaps: false, description: 'Sponsor a daily special board at a high-traffic local restaurant, event venue or entertainment complex to stay top of mind and support the <strong class="uppercase">BUY LOCAL</strong> campaign.', icon: 'layout' },
+  { title: 'MEGA Magnets', titleAllCaps: true, description: 'Put your shared message on an ad that ends up in the most high-traffic room in every home—on the kitchen refrigerator for years to come.', icon: 'magnet' },
+  { title: 'Custom Apparel', titleAllCaps: false, description: 'Shirts, hats, hoodies, koozies, collectibles and giveaways with your brand/logo at the best prices guaranteed.', icon: 'shirt' },
+  { title: 'Printing', titleAllCaps: false, description: 'Every new customer of Myriad gets 50 free business cards, just so we can show you how easy it is for us to do your letterhead, envelopes, yard signs, banners, brochures and anything printed.', icon: 'printer' },
+  { title: 'Automation', titleAllCaps: false, description: 'What if I told you that up to 80% of your daily tasks—scheduling, bidding, emails, marketing funnels, drip campaigns, lead generation newsletters, billing, you name it—we\'ve done it.', icon: 'zap' },
+];
+
+const testimonials = [
+  { quote: "We've tried Facebook ads, Google ads, everything. Nothing brings in local customers like the Community Card. Our phone rings every time it goes out!", author: 'Maria S.' },
+  { quote: "The design team made our ad look incredible. We've been on the card for 6 months now and it's become our #1 source of new clients.", author: 'James T.' },
+  { quote: "As a new salon in the area, this was perfect for getting our name out there. The value is unbeatable for the exposure we get.", author: 'Ashley M.' },
+];
+
+const businessCategories = ['Local restaurant', 'Hair studio', 'Landscaping', 'Dental', 'Home services', 'Remodeling', 'Fitness', 'Spas', 'Real estate', 'Mortgage', 'Banking', 'Junk removal'];
+
+const serviceAreas = ['Shakopee', 'Prior Lake', 'Chaska', 'Savage', 'Chanhassen', 'Eden Prairie', 'Burnsville', 'Jordan', 'Carver', 'Victoria', 'Credit River'];
+
+const faqItems = [
+  { question: 'Sounds too good to be true…', answer: 'Answer to be provided by client.' },
+  { question: 'I do most of this myself already', answer: 'Answer to be provided by client.' },
+  { question: 'How can you guarantee results?', answer: 'Answer to be provided by client.' },
+  { question: 'How long have you been doing this?', answer: 'Answer to be provided by client.' },
+  { question: 'Can I do this on an a la carte approach?', answer: 'Answer to be provided by client.' },
+  { question: 'Who else can I talk to that also did this?', answer: 'Answer to be provided by client.' },
+];
+
+const customerJourneySteps = [
+  { step: '01', label: 'SUSPECT', description: 'Someone who owns a small biz', icon: 'users' },
+  { step: '02', label: 'PROSPECT', description: 'You become a prospect.', icon: 'search' },
+  { step: '03', label: 'CUSTOMER', description: 'If you decide to try one of our myriad of products/services, you become a customer.', icon: 'shield' },
+  { step: '04', label: 'CLIENT', description: "And once those work for you, you'll see our follow-through system, how easy it is, and want to become a client (referrals, five-star reviews).", icon: 'star' },
+];
+---
+
+<Layout title="Myriad – Small Business Community" description="Recapture your life while growing your revenue. Partner with seasoned entrepreneurs and share costs for marketing, advertising, lead generation, automation, and AI.">
+  <div class="min-h-screen bg-background">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <div class="container flex items-center justify-between h-16 md:h-20">
+        <a href="#" class="flex items-center">
+          <img src="/myriad-logo.png" alt="Myriad Marketing & Advertising" class="h-12 md:h-14 w-auto rounded-lg" />
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="text-muted-foreground hover:text-primary transition-colors">About</a>
+          <a href="#how-it-works" class="text-muted-foreground hover:text-primary transition-colors">What We Do</a>
+          <a href="#pricing" class="text-muted-foreground hover:text-primary transition-colors">Products and Services</a>
+          <a href="#benefits" class="text-muted-foreground hover:text-primary transition-colors">Benefits</a>
+          <a href="#faq" class="text-muted-foreground hover:text-primary transition-colors">FAQ</a>
+          <a href="https://www.facebook.com/profile.php?id=61582494745326" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors" aria-label="Follow us on Facebook">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-10 rounded-md px-4 text-sm font-semibold bg-primary text-primary-foreground shadow-glow hover:shadow-lg transition-all">Getting Started</button></a>
+        </div>
+        <button type="button" id="mobile-menu-btn" class="md:hidden p-2 text-foreground" aria-label="Toggle menu">
+          <svg id="menu-icon-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="md:hidden hidden bg-card border-b border-border p-4 animate-fade-in">
+        <div class="flex flex-col gap-4">
+          <a href="#about" class="text-muted-foreground hover:text-primary transition-colors py-2">About</a>
+          <a href="#how-it-works" class="text-muted-foreground hover:text-primary transition-colors py-2">What We Do</a>
+          <a href="#pricing" class="text-muted-foreground hover:text-primary transition-colors py-2">Products and Services</a>
+          <a href="#benefits" class="text-muted-foreground hover:text-primary transition-colors py-2">Benefits</a>
+          <a href="#faq" class="text-muted-foreground hover:text-primary transition-colors py-2">FAQ</a>
+          <a href="https://www.facebook.com/profile.php?id=61582494745326" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors py-2 flex items-center gap-2">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href={CALENDAR_URL}><button type="button" class="w-full inline-flex items-center justify-center h-10 rounded-md px-4 text-sm font-semibold bg-primary text-primary-foreground shadow-glow">Getting Started</button></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden">
+      <div class="absolute inset-0 gradient-hero" />
+      <div class="absolute inset-0 gradient-glow opacity-50" />
+      <div class="container relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="hero-text space-y-6 md:space-y-8">
+            <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium glow-border">Small Business Community</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-balance">
+              Recapture your life while <span class="text-primary glow-text">growing your revenue</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto">
+              Community. Partner with seasoned entrepreneurs and share the costs for marketing, advertising, lead generation, automation, and AI integration.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Sign Me Up</button></a>
+              <a href="#how-it-works"><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold border-2 border-oak-light bg-transparent text-foreground hover:bg-oak/30 hover:border-primary/50 transition-all">Learn More</button></a>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-6 pt-4">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="text-sm text-muted-foreground">No contracts</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="text-sm text-muted-foreground">Cancel any time</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="text-sm text-muted-foreground">Results guaranteed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section id="how-it-works" class="py-16 md:py-24 bg-card relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-background to-transparent h-32" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-fade-down text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">How We <span class="text-primary">Work</span></h2>
+          <p class="text-lg text-muted-foreground">We get it. Juggling everything is hard. But trusting somebody to do things for you—especially things only YOU are excellent in—is even harder.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {howItWorksSteps.map((item, index) => (
+            <div class="animate-on-scroll anim-scale-in h-full" data-stagger-delay={index * 0.15}>
+              <div class="relative p-6 md:p-8 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group h-full">
+                <div class="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground rounded-xl flex items-center justify-center font-bold text-sm shadow-glow">{item.step}</div>
+                <div class="pt-4">
+                  <div class="w-14 h-14 bg-oak/30 border border-oak-light/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300">
+                    {item.icon === 'calendar' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>}
+                    {item.icon === 'search' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>}
+                    {item.icon === 'users' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                    {item.icon === 'shield' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+                  </div>
+                  <h3 class="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                  <p class="text-muted-foreground mb-4">{item.description}</p>
+                  {item.cta && (
+                    <a href={CALENDAR_URL} class="inline-flex items-center justify-center h-10 rounded-lg px-4 text-sm font-semibold bg-primary text-primary-foreground hover:shadow-glow transition-all">15 Minute Meeting</a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works (Customer Journey) -->
+    <section id="customer-journey" class="py-16 md:py-24 bg-card relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-background to-transparent h-32" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-fade-down text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">How It <span class="text-primary">Works</span></h2>
+          <p class="text-lg text-muted-foreground">We believe in a process: right now you're a <strong class="uppercase">SUSPECT</strong> (someone who owns a small biz).</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {customerJourneySteps.map((item, index) => (
+            <div class="animate-on-scroll anim-scale-in h-full" data-stagger-delay={index * 0.15}>
+              <div class="relative p-6 md:p-8 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group h-full">
+                <div class="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground rounded-xl flex items-center justify-center font-bold text-sm shadow-glow">{item.step}</div>
+                <div class="pt-4">
+                  <div class="w-14 h-14 bg-oak/30 border border-oak-light/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300">
+                    {item.icon === 'calendar' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>}
+                    {item.icon === 'search' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>}
+                    {item.icon === 'users' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                    {item.icon === 'shield' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+                    {item.icon === 'star' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>}
+                  </div>
+                  <h3 class="text-xl font-bold text-foreground mb-2 uppercase tracking-wide">{item.label}</h3>
+                  <p class="text-muted-foreground mb-4">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 md:py-24 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 gradient-glow opacity-30" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-scale-in text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Simple and <span class="text-primary glow-text">Affordable</span> Pricing</h2>
+          <p class="text-lg text-muted-foreground">Share the cost with other local businesses who are in the same boat.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.1">
+            <div class="bg-card rounded-3xl p-8 md:p-10 shadow-lg border border-oak/30 relative overflow-hidden glow-border h-full flex flex-col">
+              <div class="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier1.label}</div>
+              <div class="text-center mb-8">
+                <p class="text-muted-foreground mb-2">Starting at</p>
+                <div class="flex items-baseline justify-center gap-1">
+                  <span class="text-5xl md:text-6xl font-display font-bold text-primary glow-text">{pricingTier1.price}</span>
+                  <span class="text-muted-foreground"> {pricingTier1.period}</span>
+                </div>
+              </div>
+              <ul class="space-y-4 mb-8 flex-1">
+                {pricingTier1.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <span class="text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={CALENDAR_URL} class="block">
+                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule NOW</button>
+              </a>
+            </div>
+          </div>
+          <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.2">
+            <div class="bg-card rounded-3xl p-8 md:p-10 shadow-lg border border-border relative overflow-hidden h-full flex flex-col">
+              <div class="absolute top-0 right-0 bg-oak/40 text-foreground border border-oak-light/40 px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier2.label}</div>
+              <div class="text-center mb-8">
+                <p class="text-muted-foreground mb-2">Starting at</p>
+                <div class="flex items-baseline justify-center gap-1">
+                  <span class="text-5xl md:text-6xl font-display font-bold text-primary">{pricingTier2.price}</span>
+                  <span class="text-muted-foreground"> {pricingTier2.period}</span>
+                </div>
+              </div>
+              <ul class="space-y-4 mb-8 flex-1">
+                {pricingTier2.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <span class="text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={CALENDAR_URL} class="block">
+                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold border-2 border-primary bg-transparent text-primary hover:bg-primary/10 transition-all">Schedule NOW</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Works (14 feature cards) -->
+    <section id="benefits" class="py-16 md:py-24 bg-card">
+      <div class="container">
+        <div class="animate-on-scroll anim-fade-left text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Why <span class="text-primary">This Works</span></h2>
+          <p class="text-lg text-muted-foreground">Built specifically for small business owners who want a real local community of like-minded people who have struggled with balancing work and life.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6">
+          {featureCards.map((card, index) => (
+            <div class="animate-on-scroll anim-pop-in h-full" data-stagger-delay={index * 0.06}>
+              <div class="p-6 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group h-full">
+                <div class="w-12 h-12 bg-oak/40 border border-oak-light/40 rounded-xl flex items-center justify-center mb-4 group-hover:border-primary/50 transition-colors">
+                  {card.icon === 'sparkles' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>}
+                  {card.icon === 'users' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                  {card.icon === 'mail' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>}
+                  {card.icon === 'receipt' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>}
+                  {card.icon === 'shopping-cart' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>}
+                  {card.icon === 'map-pin' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>}
+                  {card.icon === 'shield-check' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+                  {card.icon === 'search' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>}
+                  {card.icon === 'share-2' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="M15.41 6.51l-6.82 3.98"/></svg>}
+                  {card.icon === 'layout' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>}
+                  {card.icon === 'magnet' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 2v6a6 6 0 0 0 12 0V2"/><line x1="6" x2="6" y1="2" y2="8"/><line x1="18" x2="18" y1="2" y2="8"/><path d="M6 12a6 6 0 0 0 12 0v-4"/><line x1="4" x2="6" y1="22" y2="22"/><line x1="18" x2="20" y1="22" y2="22"/></svg>}
+                  {card.icon === 'shirt' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46"/><path d="M3.62 3.46 2 20h20l-1.62-16.54"/><path d="M12 20V10"/></svg>}
+                  {card.icon === 'printer' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>}
+                  {card.icon === 'zap' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>}
+                </div>
+                <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{card.titleAllCaps ? card.title.toUpperCase() : card.title}</h3>
+                <p class="text-muted-foreground text-sm leading-relaxed" set:html={card.description} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- No Competitors -->
+    <section class="py-16 md:py-24 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 gradient-glow opacity-20" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-scale-in max-w-4xl mx-auto">
+          <div class="relative p-8 md:p-12 lg:p-16 rounded-3xl border border-primary/30 bg-card/50 backdrop-blur-sm glow-border">
+            <div class="absolute -inset-1 bg-primary/10 rounded-3xl blur-xl -z-10" />
+            <div class="flex justify-center mb-8">
+              <div class="w-16 h-16 bg-primary/20 border border-primary/30 rounded-2xl flex items-center justify-center">
+                <svg class="w-8 h-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M2 2l20 20"/></svg>
+              </div>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground text-center mb-6">No <span class="text-primary glow-text">Competitors</span></h2>
+            <p class="text-lg md:text-xl text-muted-foreground text-center max-w-2xl mx-auto">
+              No competitors on select advertising and marketing products. We guarantee category exclusivity. Your business stands alone in your category—no sharing the spotlight with your competition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 md:py-24 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 gradient-wood opacity-30" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-fade-right text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Trusted by <span class="text-primary">Local Businesses</span></h2>
+          <p class="text-lg text-muted-foreground">See what our advertiser community has to say</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+          {testimonials.map((t, index) => (
+            <div class="animate-on-scroll anim-slide-left h-full" data-stagger-delay={index * 0.15}>
+              <div class="p-6 md:p-8 bg-card rounded-2xl border border-oak/30 hover:border-primary/30 transition-all duration-300 h-full">
+                <div class="flex gap-1 mb-4">
+                  {[1,2,3,4,5].map(() => <svg class="w-5 h-5 fill-primary text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>)}
+                </div>
+                <p class="text-foreground mb-6 italic">"{t.quote}"</p>
+                <p class="font-semibold text-foreground">{t.author}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="animate-on-scroll anim-scale-in flex flex-wrap justify-center gap-6" data-stagger-delay="0.3">
+          <div class="w-32 h-32 bg-oak/20 border border-oak-light/30 rounded-xl flex items-center justify-center"><img src="/community-postcard-front.jpg" alt="Postcard example" class="w-full h-full object-cover rounded-xl" /></div>
+          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 2</div>
+          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 3</div>
+          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 4</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proudly Supporting Businesses -->
+    <section class="py-16 md:py-24 bg-card">
+      <div class="container">
+        <div class="animate-on-scroll anim-scale-in text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Proudly Supporting <span class="text-primary">Businesses</span></h2>
+          <p class="text-muted-foreground text-sm md:text-base">If your customers are in your community, we can help you reach them</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+          {businessCategories.map((name, index) => (
+            <div class="animate-on-scroll anim-pop-in" data-stagger-delay={index * 0.04}>
+              <span class="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-background rounded-full text-sm font-medium text-foreground border border-border hover:border-primary/50 hover:text-primary transition-colors">{name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="py-16 md:py-24 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 gradient-glow opacity-20" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-fade-down text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Areas We <span class="text-primary glow-text">Serve</span></h2>
+          <p class="text-lg text-muted-foreground">Myriad reaches homes across these thriving Minnesota communities</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+          {serviceAreas.map((area, index) => (
+            <div class="animate-on-scroll anim-scale-in" data-stagger-delay={index * 0.06}>
+              <div class="p-4 md:p-6 bg-card rounded-2xl text-center border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group">
+                <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <p class="font-medium text-foreground text-sm md:text-base group-hover:text-primary transition-colors">{area}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="animate-on-scroll anim-fade-up text-center mt-10" data-stagger-delay="0.3">
+          <p class="text-muted-foreground">Don't see your area? <a href={PHONE_TEL} class="text-primary hover:underline font-semibold">Contact us</a> — we're always expanding!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 gradient-glow opacity-20" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-fade-left text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Frequently Asked <span class="text-primary">Questions</span></h2>
+          <p class="text-lg text-muted-foreground">Common questions about Myriad and our community</p>
+        </div>
+        <div class="animate-on-scroll anim-fade-right max-w-3xl mx-auto" data-stagger-delay="0.2">
+          <Accordion items={faqItems} />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16 md:py-24 bg-card relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-background to-transparent h-32" />
+      <div class="container relative">
+        <div class="animate-on-scroll anim-scale-in text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium mb-6">Our Story</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Small Business Roots, <span class="text-primary">Community Heart</span></h2>
+          <p class="text-lg text-muted-foreground">We are a community business agency, family owned, with a shared mission: helping small businesses stay connected to neighbors who make their work possible, while making life easier for small business owners to get back their life, time and family.</p>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="animate-on-scroll anim-fade-left bg-background rounded-2xl border border-border p-8 md:p-12 mb-8" data-stagger-delay="0.2">
+            <h3 class="text-xl md:text-2xl font-bold text-foreground mb-4">Our Journey</h3>
+            <p class="text-muted-foreground leading-relaxed">Our journey started with a simple observation in a world of digital noise, juggling priorities, and the daily struggle of running a business. You're swamped! But you're not alone. Our community brings peace and prosperity for those wearing many hats, but not having anybody they can trust to do what they know only they can do. Everybody wants to scale their business, grow it, adapt and profit.</p>
+          </div>
+          <div class="animate-on-scroll anim-fade-right bg-background rounded-2xl border border-border p-8 md:p-12 mb-8" data-stagger-delay="0.3">
+            <h3 class="text-xl md:text-2xl font-bold text-foreground mb-4">Why Myriad</h3>
+            <p class="text-muted-foreground leading-relaxed">We believe that community isn't about algorithms. It's built on personal touches, referrals, happy customers, repeat business for you, and for us. We've combined our leadership's years of experience with our support staff and affiliates passion for excellence and follow through by incorporating cutting edge technology with old school honor—where promises are kept. Myriad delivers.</p>
+          </div>
+          <div class="animate-on-scroll anim-fade-left bg-background rounded-2xl border border-border p-8 md:p-12 mb-8" data-stagger-delay="0.4">
+            <h3 class="text-xl md:text-2xl font-bold text-foreground mb-6">What We Value</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="text-center md:text-left">
+                <div class="w-12 h-12 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center mb-4 mx-auto md:mx-0">
+                  <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h4 class="font-semibold text-foreground mb-2">The Power of Local</h4>
+                <p class="text-muted-foreground text-sm">We celebrate the coffee shops, boutiques, and service providers that give our neighborhoods character.</p>
+              </div>
+              <div class="text-center md:text-left">
+                <div class="w-12 h-12 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center mb-4 mx-auto md:mx-0">
+                  <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </div>
+                <h4 class="font-semibold text-foreground mb-2">Handwritten Connection</h4>
+                <p class="text-muted-foreground text-sm">We provide the canvas; you provide the personal touch that turns a customer into a regular.</p>
+              </div>
+              <div class="text-center md:text-left">
+                <div class="w-12 h-12 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center mb-4 mx-auto md:mx-0">
+                  <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4 class="font-semibold text-foreground mb-2">Family-Owned Integrity</h4>
+                <p class="text-muted-foreground text-sm">As a family team, we treat every client like a neighbor. When you work with us, you're working with people who care about your success.</p>
+              </div>
+              <div class="text-center md:text-left">
+                <div class="w-12 h-12 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center mb-4 mx-auto md:mx-0">
+                  <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 18v4"/><path d="m17.24 17.24 2.83-2.83"/><path d="M18 12h4"/><path d="m17.24 6.76 2.83 2.83"/><circle cx="12" cy="12" r="4"/></svg>
+                </div>
+                <h4 class="font-semibold text-foreground mb-2">Handshake Values</h4>
+                <p class="text-muted-foreground text-sm">My grandfather was a "handshake" guy, who taught me the value of hard work at his Edina Hardware Hank store. I've done stints with Fortune 500, MN hospitality, the Better Business Bureau, nonprofits, and Inc. Magazine's 17th fastest growing company. We value your time, and we get results.</p>
+              </div>
+            </div>
+          </div>
+          <div class="animate-on-scroll anim-scale-in text-center bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 rounded-2xl border border-primary/30 p-8 md:p-12" data-stagger-delay="0.5">
+            <h3 class="text-xl md:text-2xl font-bold text-foreground mb-4">Let's Build Our Business Community Together</h3>
+            <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">Whether you're looking to announce a grand opening, simply send a thank you to your local loyal regulars, or fully automate your business, we are here to help you make a lasting impression.</p>
+            <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule Now</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 md:py-24 bg-card">
+      <div class="container">
+        <div class="animate-on-scroll anim-fade-up max-w-2xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Ready to <span class="text-primary glow-text">Grow</span> Your Business?</h2>
+          <p class="text-lg text-muted-foreground mb-10">Give us a call and we'll discuss how Myriad can help you reach more local customers.</p>
+          <a href={PHONE_TEL} class="inline-block">
+            <button type="button" class="inline-flex items-center justify-center gap-3 h-16 rounded-xl px-10 text-xl font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">
+              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call {PHONE}
+            </button>
+          </a>
+          <div class="mt-10 flex flex-wrap justify-center gap-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <p class="text-muted-foreground">Mon-Fri 9am-5pm</p>
+            </div>
+            <a href={`mailto:${EMAIL}`} class="flex items-center gap-3 group">
+              <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <p class="text-muted-foreground group-hover:text-primary transition-colors">{EMAIL}</p>
+            </a>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <p class="text-muted-foreground">{SERVICE_AREA}</p>
+            </div>
+            <a href="https://www.facebook.com/profile.php?id=61582494745326" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <p class="text-muted-foreground group-hover:text-primary transition-colors">Follow us on Facebook</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 md:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-oak via-primary/20 to-oak" />
+      <div class="absolute inset-0 gradient-glow" />
+      <div class="animate-on-scroll anim-scale-in container relative text-center">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">Start Reaching Your <span class="text-primary glow-text">Neighbors</span> Today</h2>
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">We can only take on six clients per year, so that we can focus on the time and energy into making this work for you.</p>
+        <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-16 rounded-xl px-10 text-xl font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule Now</button></a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-card border-t border-border">
+      <div class="container">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div class="animate-on-scroll anim-slide-left">
+            <img src="/myriad-logo.png" alt="Myriad Marketing & Advertising" class="h-32 w-auto rounded-lg mb-2" />
+            <p class="text-muted-foreground mb-4">Helping local businesses reach their neighbors through a myriad of advertising, marketing, and automation services.</p>
+          </div>
+          <div class="animate-on-scroll anim-fade-up">
+            <h4 class="font-semibold text-foreground mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-muted-foreground">
+              <li><a href="#how-it-works" class="hover:text-primary transition-colors">What We Do</a></li>
+              <li><a href="#pricing" class="hover:text-primary transition-colors">Products and Services</a></li>
+              <li><a href="#benefits" class="hover:text-primary transition-colors">Benefits</a></li>
+              <li><a href="#faq" class="hover:text-primary transition-colors">FAQ</a></li>
+              <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div class="animate-on-scroll anim-slide-right">
+            <h4 class="font-semibold text-foreground mb-4">Contact Us</h4>
+            <ul class="space-y-2 text-muted-foreground">
+              <li><a href={PHONE_TEL} class="hover:text-primary transition-colors">{PHONE}</a></li>
+              <li><a href={`mailto:${EMAIL}`} class="hover:text-primary transition-colors">{EMAIL}</a></li>
+              <li>{SERVICE_AREA}</li>
+              <li class="pt-2">
+                <a href="https://www.facebook.com/profile.php?id=61582494745326" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="animate-on-scroll border-t border-border pt-8 text-center text-muted-foreground text-sm" data-stagger-delay="0.3">
+          <p>© 2026 Community Card. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Call Button -->
+    <a href={PHONE_TEL} class="floating-cta fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 bg-primary text-primary-foreground rounded-full shadow-glow flex items-center justify-center hover:scale-110 transition-transform duration-300" aria-label="Call us">
+      <svg class="w-6 h-6 md:w-7 md:h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+
+  <style>
+    .hero-text { opacity: 0; animation: heroFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-cta { animation: float-cta 2s ease-in-out infinite; }
+    @keyframes float-cta {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</Layout>

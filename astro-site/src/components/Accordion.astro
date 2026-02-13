@@ -1,0 +1,35 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+const { items } = Astro.props;
+---
+<div class="faq-accordion space-y-4">
+  {items.map((faq, index) => (
+    <div
+      data-accordion-item
+      aria-expanded="false"
+      class="bg-card rounded-xl border border-oak/30 px-6 transition-all duration-300 group"
+    >
+      <button
+        type="button"
+        data-accordion-trigger
+        class="flex w-full items-center justify-between py-5 text-left font-semibold text-foreground hover:text-primary transition-colors gap-4"
+        aria-controls={`faq-answer-${index}`}
+        id={`faq-trigger-${index}`}
+      >
+        <span>{faq.question}</span>
+        <svg class="h-5 w-5 shrink-0 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div
+        id={`faq-answer-${index}`}
+        data-accordion-content
+        role="region"
+        aria-labelledby={`faq-trigger-${index}`}
+        class="hidden overflow-hidden text-muted-foreground pb-5"
+      >
+        <p class="pb-4 pt-0">{faq.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
