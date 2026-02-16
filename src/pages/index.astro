@@ -10,9 +10,9 @@ const EMAIL = 'info@myriadincinc.com';
 const SERVICE_AREA = 'Seven County Twin City Metro Area';
 
 const howItWorksSteps = [
-  { step: '01', title: '15 Minute Meeting', description: 'Reserve a time/day to discuss your business goals, current strategy, and timeline.', icon: 'calendar', cta: true },
+  { step: '01', title: '15 Minute Meeting', description: 'Reserve a 15 minute time slot to discuss your business goals, current strategy, and timeline.', icon: 'calendar', cta: true },
   { step: '02', title: 'We Research It', description: 'Our team does a deep dive into your digital footprint, industry, competition, and future trends.', icon: 'search' },
-  { step: '03', title: 'We Meet You 1:1', description: 'Relationships are everything. This no-obligation, zero-pressure meet and greet lets both of us vet each other, while giving you a written game plan from us to grow your business while getting your life back.', icon: 'users' },
+  { step: '03', title: 'We Meet You 1:1', description: "Relationships are everything. After our initial 15 minute meeting, and our research is done, we'll set up a no-obligation, zero-pressure meet and greet that lets both of us vet each other. This will also give you a written game plan from us to grow your business and get your life back.", icon: 'users' },
   { step: '04', title: 'Industry Exclusive Option', description: "If we both decide to partner up, we can make sure we're also not working for your competitors.", icon: 'shield' },
 ];
 
@@ -29,22 +29,22 @@ const pricingTier2 = {
   features: ['Google Business Profile optimization', 'SEO, social media, branding', 'CRM integration and automation', 'Reputation management'],
 };
 
-// 14 feature/service cards for "Why This Works" – description may include HTML (underline/caps)
+// 14 feature/service cards for "Products and Services" – description may include HTML (underline/caps); optional linkUrl for external link
 const featureCards = [
-  { title: 'Why Myriad', titleAllCaps: false, description: 'In Myriad, we have a wide variety of products, services and advice our clients used to achieve their goals. Each client\'s package is unique and customized from a "myriad of options."', icon: 'sparkles' },
-  { title: 'Networking', titleAllCaps: false, description: 'Think BNI, but without the <u>big monthly expense</u> and online meetings versus carving out in-person lead sharing times at a local venue.', icon: 'users' },
-  { title: "Megan's Mailers", titleAllCaps: false, description: 'Beautifully designed <strong class="uppercase">JUMBO</strong> postcards that go to 2,500 homes in towns and suburbs around the Twin City Metro every month.', icon: 'mail' },
+  { title: 'Products and Services', titleAllCaps: false, description: 'At Myriad, we have a wide variety of products, services and advice our clients use to achieve their goals.', icon: 'sparkles' },
+  { title: 'Networking', titleAllCaps: false, description: 'Think BNI, but without the big monthly expense <u>and</u> without in-person, weekly meetings.', icon: 'users' },
+  { title: "Megan's Mailers", titleAllCaps: false, description: 'Beautifully designed <strong class="uppercase">JUMBO</strong> postcards that go to 2,500 homes in towns and suburbs around the Twin City Metro every month.', icon: 'mail', linkUrl: 'https://megansmailers.com' },
   { title: 'Cash Register Receipt Tape Coupons', titleAllCaps: false, description: 'Trackable coupons given to 20,000+ shoppers each and every month at the local grocery stores of your choice.', icon: 'receipt' },
-  { title: 'Shopping Cart Advertising', titleAllCaps: false, description: 'Billboard top-of-mind mini billboards in stores that have 15,000+ monthly shoppers.', icon: 'shopping-cart' },
-  { title: 'Geofencing', titleAllCaps: false, description: 'Make sure every time a potential customer searches for <u>your industry near me</u>, that your business is at the top of a hyper local search.', icon: 'map-pin' },
+  { title: 'Shopping Cart Advertising', titleAllCaps: false, description: 'Brand-building top-of-mind mini billboards in stores that have 15,000+ monthly shoppers.', icon: 'shopping-cart' },
+  { title: 'Geofencing', titleAllCaps: false, description: 'Make sure every time a potential customer searches for &#9001; your industry &#9002; near me (e.g. restaurant near me, hairdresser near me, car repair near me), your business is at the top of a hyper local search.', icon: 'map-pin' },
   { title: 'Reputation Management', titleAllCaps: false, description: 'Bad reviews suck, especially from keyboard warriors who never even let you know they were disappointed. We stop these from going public, allowing you to fix the situation and create a customer for life.', icon: 'shield-check' },
   { title: 'SEO and Website Optimization', titleAllCaps: false, description: 'Professional SEO and website optimization to help your business rank higher in search results and convert more visitors into customers.', icon: 'search' },
-  { title: 'Social Media', titleAllCaps: false, description: 'What would your day/week look like if all your posts and comment replies were automated? One customer told us they got 10 hours back of their life every week.', icon: 'share-2' },
+  { title: 'Social Media', titleAllCaps: false, description: 'What would your day/week look like if all of your posts, <strong>blogs</strong>, and comment replies were automated?', icon: 'share-2' },
   { title: 'Special Boards', titleAllCaps: false, description: 'Sponsor a daily special board at a high-traffic local restaurant, event venue or entertainment complex to stay top of mind and support the <strong class="uppercase">BUY LOCAL</strong> campaign.', icon: 'layout' },
-  { title: 'MEGA Magnets', titleAllCaps: true, description: 'Put your shared message on an ad that ends up in the most high-traffic room in every home—on the kitchen refrigerator for years to come.', icon: 'magnet' },
+  { title: 'MEGA Magnets', titleAllCaps: false, description: 'Put your shared message on an ad that ends up in the most high-traffic room in every home—on the kitchen refrigerator for years to come.', icon: 'magnet' },
   { title: 'Custom Apparel', titleAllCaps: false, description: 'Shirts, hats, hoodies, koozies, collectibles and giveaways with your brand/logo at the best prices guaranteed.', icon: 'shirt' },
   { title: 'Printing', titleAllCaps: false, description: 'Every new customer of Myriad gets 50 free business cards, just so we can show you how easy it is for us to do your letterhead, envelopes, yard signs, banners, brochures and anything printed.', icon: 'printer' },
-  { title: 'Automation', titleAllCaps: false, description: 'What if I told you that up to 80% of your daily tasks—scheduling, bidding, emails, marketing funnels, drip campaigns, lead generation newsletters, billing, you name it—we\'ve done it.', icon: 'zap' },
+  { title: 'Automation', titleAllCaps: false, description: 'What if I told you that we can easily automate up to 80% of your daily tasks?', icon: 'zap' },
 ];
 
 const testimonials = [
@@ -67,14 +67,24 @@ const faqItems = [
 ];
 
 const customerJourneySteps = [
-  { step: '01', label: 'SUSPECT', description: 'Someone who owns a small biz', icon: 'users' },
-  { step: '02', label: 'PROSPECT', description: 'You become a prospect.', icon: 'search' },
-  { step: '03', label: 'CUSTOMER', description: 'If you decide to try one of our myriad of products/services, you become a customer.', icon: 'shield' },
-  { step: '04', label: 'CLIENT', description: "And once those work for you, you'll see our follow-through system, how easy it is, and want to become a client (referrals, five-star reviews).", icon: 'star' },
+  { step: '01', label: 'SUSPECT', description: "If you're reading this, you're a SUSPECT. You're a small business owner in the market that we service.", icon: 'users' },
+  { step: '02', label: 'PROSPECT', description: 'If you decide to set up a 15 minute meeting, we consider you a PROSPECTIVE customer.', icon: 'search' },
+  { step: '03', label: 'CUSTOMER', description: 'If you decide to try one of our "myriad" of products/services, you become a CUSTOMER.', icon: 'shield' },
+  { step: '04', label: 'CLIENT', description: "Once one of these products and our services work for you, you'll witness firsthand our extensive follow-through system (referrals, five-star reviews, networking, community).", icon: 'star' },
+];
+
+// Hero carousel: photos from Myriad Photos folder (public/myriad-photos/)
+const heroCarouselImages = [
+  '/myriad-photos/IMG_2804.png',
+  '/myriad-photos/IMG_4727.png',
+  '/myriad-photos/IMG_5717-1.png',
+  '/myriad-photos/IMG_6269.jpeg',
+  '/myriad-photos/IMG_7484.png',
+  '/myriad-photos/IMG_8527.png',
 ];
 ---
 
-<Layout title="Myriad – Small Business Community" description="Recapture your life while growing your revenue. Partner with seasoned entrepreneurs and share costs for marketing, advertising, lead generation, automation, and AI.">
+<Layout title="Myriad – Small Business Community" description="Recapture your life while growing your revenue. Partner with seasoned vets and share the costs for marketing, advertising, lead generation, automation, and AI integration.">
   <div class="min-h-screen bg-background">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -114,36 +124,57 @@ const customerJourneySteps = [
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section: text left, layered postcard carousel right -->
     <section class="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden">
       <div class="absolute inset-0 gradient-hero" />
       <div class="absolute inset-0 gradient-glow opacity-50" />
       <div class="container relative">
-        <div class="max-w-3xl mx-auto text-center">
-          <div class="hero-text space-y-6 md:space-y-8">
-            <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium glow-border">Small Business Community</span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-balance">
-              Recapture your life while <span class="text-primary glow-text">growing your revenue</span>
-            </h1>
-            <p class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto">
-              Community. Partner with seasoned entrepreneurs and share the costs for marketing, advertising, lead generation, automation, and AI integration.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Sign Me Up</button></a>
-              <a href="#how-it-works"><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold border-2 border-oak-light bg-transparent text-foreground hover:bg-oak/30 hover:border-primary/50 transition-all">Learn More</button></a>
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center min-h-[28rem] lg:min-h-[32rem]">
+          <!-- Left: copy -->
+          <div class="text-center lg:text-left order-2 lg:order-1">
+            <div class="hero-text space-y-6 md:space-y-8">
+              <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium glow-border">Small Business Community</span>
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-balance">
+                Recapture your life while <span class="text-primary glow-text">growing your revenue</span>
+              </h1>
+              <p class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
+                Partner with seasoned vets and share the costs for marketing, advertising, lead generation, automation, and AI integration.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Sign Me Up</button></a>
+                <a href="#how-it-works"><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold border-2 border-oak-light bg-transparent text-foreground hover:bg-oak/30 hover:border-primary/50 transition-all">Learn More</button></a>
+              </div>
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-sm text-muted-foreground">No contracts</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-sm text-muted-foreground">Cancel any time</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-sm text-muted-foreground">Results guaranteed</span>
+                </div>
+              </div>
             </div>
-            <div class="flex flex-wrap items-center justify-center gap-6 pt-4">
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-sm text-muted-foreground">No contracts</span>
+          </div>
+          <!-- Right: stacked image slider, active pops to front (like AnimatedTestimonials), dots below, images only -->
+          <div class="hero-stack-wrap order-1 lg:order-2 flex flex-col items-center lg:items-end">
+            <div class="hero-carousel-wrapper w-full max-w-sm lg:max-w-md">
+              <div id="hero-carousel" class="hero-carousel-horizontal relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-card/50" aria-label="Myriad photos carousel">
+                {heroCarouselImages.map((src, i) => (
+                  <div class={`hero-slide ${i === 5 ? 'hero-pos-left' : i === 0 ? 'hero-pos-center' : i === 1 ? 'hero-pos-right' : ''}`} data-index={i} aria-hidden={i !== 0}>
+                    <img src={src} alt={`Myriad photo ${i + 1}`} class="w-full h-full object-cover object-center rounded-2xl" />
+                  </div>
+                ))}
               </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-sm text-muted-foreground">Cancel any time</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                <span class="text-sm text-muted-foreground">Results guaranteed</span>
+              <div id="hero-carousel-dots" class="hero-dots flex justify-center gap-2 mt-4" aria-label="Carousel navigation">
+                {heroCarouselImages.map((_, i) => (
+                  <button type="button" class="hero-dot" data-index={i} aria-label={`Go to photo ${i + 1}`} aria-current={i === 0 ? 'true' : undefined}
+                  ><span class="sr-only">Photo {i + 1}</span></button>
+                ))}
               </div>
             </div>
           </div>
@@ -190,7 +221,10 @@ const customerJourneySteps = [
       <div class="container relative">
         <div class="animate-on-scroll anim-fade-down text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">How It <span class="text-primary">Works</span></h2>
-          <p class="text-lg text-muted-foreground">We believe in a process: right now you're a <strong class="uppercase">SUSPECT</strong> (someone who owns a small biz).</p>
+          <p class="text-lg text-muted-foreground mb-6">We believe in a process:</p>
+          <p class="text-xl md:text-2xl font-semibold text-foreground tracking-wide">
+            SUSPECT <span class="text-primary mx-2">→</span> PROSPECT <span class="text-primary mx-2">→</span> CUSTOMER <span class="text-primary mx-2">→</span> CLIENT
+          </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {customerJourneySteps.map((item, index) => (
@@ -270,7 +304,7 @@ const customerJourneySteps = [
                 ))}
               </ul>
               <a href={CALENDAR_URL} class="block">
-                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold border-2 border-primary bg-transparent text-primary hover:bg-primary/10 transition-all">Schedule NOW</button>
+                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule NOW</button>
               </a>
             </div>
           </div>
@@ -278,11 +312,11 @@ const customerJourneySteps = [
       </div>
     </section>
 
-    <!-- Why This Works (14 feature cards) -->
+    <!-- Products and Services (14 feature cards) -->
     <section id="benefits" class="py-16 md:py-24 bg-card">
       <div class="container">
         <div class="animate-on-scroll anim-fade-left text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Why <span class="text-primary">This Works</span></h2>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Why It <span class="text-primary">Works</span></h2>
           <p class="text-lg text-muted-foreground">Built specifically for small business owners who want a real local community of like-minded people who have struggled with balancing work and life.</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6">
@@ -305,8 +339,17 @@ const customerJourneySteps = [
                   {card.icon === 'printer' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>}
                   {card.icon === 'zap' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>}
                 </div>
-                <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{card.titleAllCaps ? card.title.toUpperCase() : card.title}</h3>
+                <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {card.linkUrl ? (
+                    <a href={card.linkUrl} target="_blank" rel="noopener noreferrer" class="hover:underline">{card.titleAllCaps ? card.title.toUpperCase() : card.title}</a>
+                  ) : (
+                    card.titleAllCaps ? card.title.toUpperCase() : card.title
+                  )}
+                </h3>
                 <p class="text-muted-foreground text-sm leading-relaxed" set:html={card.description} />
+                {card.linkUrl && (
+                  <a href={card.linkUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-semibold text-primary hover:underline">Learn more →</a>
+                )}
               </div>
             </div>
           ))}
@@ -326,7 +369,7 @@ const customerJourneySteps = [
                 <svg class="w-8 h-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M2 2l20 20"/></svg>
               </div>
             </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground text-center mb-6">No <span class="text-primary glow-text">Competitors</span></h2>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground text-center mb-6">Industry <span class="text-primary glow-text">Exclusive</span></h2>
             <p class="text-lg md:text-xl text-muted-foreground text-center max-w-2xl mx-auto">
               No competitors on select advertising and marketing products. We guarantee category exclusivity. Your business stands alone in your category—no sharing the spotlight with your competition.
             </p>
@@ -438,7 +481,7 @@ const customerJourneySteps = [
           </div>
           <div class="animate-on-scroll anim-fade-right bg-background rounded-2xl border border-border p-8 md:p-12 mb-8" data-stagger-delay="0.3">
             <h3 class="text-xl md:text-2xl font-bold text-foreground mb-4">Why Myriad</h3>
-            <p class="text-muted-foreground leading-relaxed">We believe that community isn't about algorithms. It's built on personal touches, referrals, happy customers, repeat business for you, and for us. We've combined our leadership's years of experience with our support staff and affiliates passion for excellence and follow through by incorporating cutting edge technology with old school honor—where promises are kept. Myriad delivers.</p>
+            <p class="text-muted-foreground leading-relaxed">We believe that community isn't about algorithms. It's built on personal touches, referrals, happy customers, and repeat business—for you, and for us. We've combined our leadership's years of experience with our support staff and affiliates passion for excellence and follow through by incorporating cutting edge technology with old school honor—where promises are kept. Myriad delivers.</p>
           </div>
           <div class="animate-on-scroll anim-fade-left bg-background rounded-2xl border border-border p-8 md:p-12 mb-8" data-stagger-delay="0.4">
             <h3 class="text-xl md:text-2xl font-bold text-foreground mb-6">What We Value</h3>
@@ -569,7 +612,7 @@ const customerJourneySteps = [
           </div>
         </div>
         <div class="animate-on-scroll border-t border-border pt-8 text-center text-muted-foreground text-sm" data-stagger-delay="0.3">
-          <p>© 2026 Community Card. All rights reserved.</p>
+          <p>© 2026 Myriad, Inc.</p>
         </div>
       </div>
     </footer>
@@ -591,5 +634,103 @@ const customerJourneySteps = [
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
     }
+    /* Hero: horizontal stack – 3 cards with depth; left/right recessed and tilted */
+    .hero-carousel-horizontal { position: relative; perspective: 1200px; transform-style: preserve-3d; }
+    .hero-carousel-horizontal .hero-slide {
+      position: absolute; left: 50%; top: 0; width: 100%; height: 100%;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease, filter 0.5s ease, width 0.5s ease, box-shadow 0.5s ease;
+      z-index: 1; pointer-events: none;
+      border-radius: 1rem; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      transform-style: preserve-3d;
+    }
+    /* Off (not left/center/right) */
+    .hero-carousel-horizontal .hero-slide { transform: translateX(40%) scale(0.88); opacity: 0.15; filter: blur(6px); }
+    /* Previous: clear strip on left (~25% visible), light blur so it reads as “behind” */
+    /* Left: half visible, recessed (translateZ), slant + rotateY for depth */
+    .hero-carousel-horizontal .hero-slide.hero-pos-left {
+      z-index: 1;
+      transform: translateX(-100%) translateZ(-50px) scale(0.96) rotate(-5deg) rotateY(8deg);
+      opacity: 0.6; filter: blur(8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.35);
+    }
+    /* Center: featured slide, narrower so left/right peers show; on top, sharp */
+    .hero-carousel-horizontal .hero-slide.hero-pos-center {
+      width: 72%;
+      z-index: 3; pointer-events: auto;
+      transform: translateX(-50%) scale(1);
+      opacity: 1; filter: blur(0);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.45);
+    }
+    /* Next: most of card visible on right (~85% peek) */
+    /* Right: half visible, recessed (translateZ), slant + rotateY for depth */
+    .hero-carousel-horizontal .hero-slide.hero-pos-right {
+      z-index: 2;
+      transform: translateX(0%) translateZ(-50px) scale(0.96) rotate(5deg) rotateY(-8deg);
+      opacity: 0.6; filter: blur(8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.35);
+    }
+    .hero-carousel-horizontal .hero-slide.hero-slide-pop {
+      animation: hero-slide-pop 0.4s ease-in-out forwards;
+    }
+    @keyframes hero-slide-pop {
+      0% { transform: translateX(-50%) scale(1) translateY(0); }
+      50% { transform: translateX(-50%) scale(1.02) translateY(-24px); }
+      100% { transform: translateX(-50%) scale(1) translateY(0); }
+    }
+    .hero-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+    .hero-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; border: 2px solid hsl(var(--muted-foreground) / 0.5); background: transparent; cursor: pointer; padding: 0; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+    .hero-dot:hover { border-color: hsl(var(--primary)); background: hsl(var(--primary) / 0.3); transform: scale(1.2); }
+    .hero-dot[aria-current="true"] { background: hsl(var(--primary)); border-color: hsl(var(--primary)); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
+
+  <script>
+    (function heroCarousel() {
+      var carousel = document.getElementById('hero-carousel');
+      var dotsContainer = document.getElementById('hero-carousel-dots');
+      if (!carousel || !dotsContainer) return;
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll('.hero-slide'));
+      var dots = Array.prototype.slice.call(dotsContainer.querySelectorAll('.hero-dot'));
+      var total = slides.length;
+      if (total === 0 || total !== dots.length) return;
+      var currentIndex = 0;
+      var ADVANCE_MS = 5000;
+
+      function applyStack() {
+        var leftIdx = (currentIndex - 1 + total) % total;
+        var rightIdx = (currentIndex + 1) % total;
+        slides.forEach(function (s, i) {
+          s.classList.remove('hero-pos-left', 'hero-pos-center', 'hero-pos-right', 'hero-slide-pop');
+          if (i === leftIdx) s.classList.add('hero-pos-left');
+          else if (i === currentIndex) s.classList.add('hero-pos-center');
+          else if (i === rightIdx) s.classList.add('hero-pos-right');
+          s.setAttribute('aria-hidden', i !== currentIndex);
+        });
+        dots.forEach(function (d, i) {
+          if (i === currentIndex) d.setAttribute('aria-current', 'true');
+          else d.removeAttribute('aria-current');
+        });
+      }
+
+      function goTo(index) {
+        var nextIndex = (index + total) % total;
+        if (nextIndex === currentIndex) return;
+        currentIndex = nextIndex;
+        applyStack();
+        var activeSlide = slides[currentIndex];
+        activeSlide.classList.add('hero-slide-pop');
+        activeSlide.addEventListener('animationend', function removePop() {
+          activeSlide.removeEventListener('animationend', removePop);
+          activeSlide.classList.remove('hero-slide-pop');
+        });
+      }
+
+      applyStack();
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { goTo(i); });
+      });
+      setInterval(function () { goTo(currentIndex + 1); }, ADVANCE_MS);
+    })();
+  </script>
 </Layout>
