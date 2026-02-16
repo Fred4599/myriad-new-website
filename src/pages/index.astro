@@ -84,7 +84,7 @@ const heroCarouselImages = [
 ];
 ---
 
-<Layout title="Myriad – Small Business Community" description="Recapture your life while growing your revenue. Partner with seasoned vets and share the costs for marketing, advertising, lead generation, automation, and AI integration.">
+<Layout title="Myriad – Small Business Community" description="Recapture your life while growing your revenue. Partner with seasoned vets and share the costs for marketing, advertising, lead generation, automation, and AI integration." preloadHeroImage={heroCarouselImages[0]}>
   <div class="min-h-screen bg-background">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -130,8 +130,8 @@ const heroCarouselImages = [
       <div class="absolute inset-0 gradient-glow opacity-50" />
       <div class="container relative">
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center min-h-[28rem] lg:min-h-[32rem]">
-          <!-- Left: copy -->
-          <div class="text-center lg:text-left order-2 lg:order-1">
+          <!-- Left: copy; on mobile show first (above images) -->
+          <div class="text-center lg:text-left order-1 lg:order-1">
             <div class="hero-text space-y-6 md:space-y-8">
               <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium glow-border">Small Business Community</span>
               <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-balance">
@@ -160,13 +160,22 @@ const heroCarouselImages = [
               </div>
             </div>
           </div>
-          <!-- Right: stacked image slider, active pops to front (like AnimatedTestimonials), dots below, images only -->
-          <div class="hero-stack-wrap order-1 lg:order-2 flex flex-col items-center lg:items-end">
+          <!-- Right: stacked image slider; on mobile show below text -->
+          <div class="hero-stack-wrap order-2 lg:order-2 flex flex-col items-center lg:items-end">
             <div class="hero-carousel-wrapper w-full max-w-sm lg:max-w-md">
               <div id="hero-carousel" class="hero-carousel-horizontal relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-card/50" aria-label="Myriad photos carousel">
                 {heroCarouselImages.map((src, i) => (
                   <div class={`hero-slide ${i === 5 ? 'hero-pos-left' : i === 0 ? 'hero-pos-center' : i === 1 ? 'hero-pos-right' : ''}`} data-index={i} aria-hidden={i !== 0}>
-                    <img src={src} alt={`Myriad photo ${i + 1}`} class="w-full h-full object-cover object-center rounded-2xl" />
+                    <img
+                      src={src}
+                      alt={`Myriad photo ${i + 1}`}
+                      class="w-full h-full object-cover object-center rounded-2xl"
+                      width={400}
+                      height={533}
+                      decoding="async"
+                      fetchpriority={i === 0 ? 'high' : undefined}
+                      loading={i === 0 ? undefined : 'lazy'}
+                    />
                   </div>
                 ))}
               </div>

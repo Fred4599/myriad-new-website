@@ -2,13 +2,15 @@
 interface Props {
   title?: string;
   description?: string;
+  preloadHeroImage?: string;
 }
-const { title = 'Myriad – Community Card', description = 'Local marketing made simple. Reach every mailbox in your community.' } = Astro.props;
+const { title = 'Myriad – Community Card', description = 'Local marketing made simple. Reach every mailbox in your community.', preloadHeroImage } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    {preloadHeroImage && <link rel="preload" as="image" href={preloadHeroImage} />}
     <link rel="icon" href="/myriad-logo.png" />
     <link rel="icon" type="image/png" href="/myriad-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
