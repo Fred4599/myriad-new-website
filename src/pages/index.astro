@@ -170,7 +170,6 @@ const customerJourneySteps = [
 // Hero carousel: photos from Myriad Photos folder (public/myriad-photos/)
 const heroCarouselImages = [
   '/myriad-photos/IMG_2804.png',
-  '/myriad-photos/IMG_4727.png',
   '/myriad-photos/IMG_5717-1.png',
   '/myriad-photos/IMG_6269.jpeg',
   '/myriad-photos/IMG_7484.png',
@@ -259,7 +258,7 @@ const heroCarouselImages = [
             <div class="hero-carousel-wrapper w-full max-w-sm lg:max-w-md">
               <div id="hero-carousel" class="hero-carousel-horizontal relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-card/50" aria-label="Myriad photos carousel">
                 {heroCarouselImages.map((src, i) => (
-                  <div class={`hero-slide ${i === 5 ? 'hero-pos-left' : i === 0 ? 'hero-pos-center' : i === 1 ? 'hero-pos-right' : ''}`} data-index={i} aria-hidden={i !== 0}>
+                  <div class={`hero-slide ${i === 4 ? 'hero-pos-left' : i === 0 ? 'hero-pos-center' : i === 1 ? 'hero-pos-right' : ''}`} data-index={i} aria-hidden={i !== 0}>
                     <img
                       src={src}
                       alt={`Myriad photo ${i + 1}`}
