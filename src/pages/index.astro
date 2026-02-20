@@ -17,16 +17,23 @@ const howItWorksSteps = [
 ];
 
 const pricingTier1 = {
-  label: 'Most Popular',
+  label: 'Basic',
   price: '$50',
   period: 'a month',
-  features: ['Professional design included', 'Hyperlocal targeted marketing', 'Weekly performance insights', 'No long-term contracts'],
+  features: ['Membership in our networking community', 'Pick one product or service', 'Weekly performance insights', 'No long-term contract'],
 };
 const pricingTier2 = {
-  label: 'A La Carte',
+  label: 'Upgrade',
   price: '$200',
   period: 'a month',
-  features: ['Google Business Profile optimization', 'SEO, social media, branding', 'CRM integration and automation', 'Reputation management'],
+  features: ['Everything in Basic, plus', 'Pick three products or services', 'Google Business Profile Optimization', 'Monthly goal setting'],
+};
+const pricingTier3 = {
+  label: 'Mac Daddy',
+  price: '$1,000',
+  period: 'a month',
+  features: ['Everything in Basic and Upgrade', 'Full automation of your business', 'Reputation management', 'Annual budget review'],
+  isTopTier: true,
 };
 
 // 14 feature/service cards for "Products and Services" – description may include HTML (underline/caps); optional linkUrl for external link
@@ -36,26 +43,112 @@ const featureCards = [
   { title: "Megan's Mailers", titleAllCaps: false, description: 'Beautifully designed <strong class="uppercase">JUMBO</strong> postcards that go to 2,500 homes in towns and suburbs around the Twin City Metro every month.', icon: 'mail', linkUrl: 'https://megansmailers.com' },
   { title: 'Cash Register Receipt Tape Coupons', titleAllCaps: false, description: 'Trackable coupons given to 20,000+ shoppers each and every month at the local grocery stores of your choice.', icon: 'receipt' },
   { title: 'Shopping Cart Advertising', titleAllCaps: false, description: 'Brand-building top-of-mind mini billboards in stores that have 15,000+ monthly shoppers.', icon: 'shopping-cart' },
-  { title: 'Geofencing', titleAllCaps: false, description: 'Make sure every time a potential customer searches for &#9001; your industry &#9002; near me (e.g. restaurant near me, hairdresser near me, car repair near me), your business is at the top of a hyper local search.', icon: 'map-pin' },
+  { title: 'Geofencing', titleAllCaps: false, description: '', icon: 'map-pin', isGeofencing: true },
   { title: 'Reputation Management', titleAllCaps: false, description: 'Bad reviews suck, especially from keyboard warriors who never even let you know they were disappointed. We stop these from going public, allowing you to fix the situation and create a customer for life.', icon: 'shield-check' },
   { title: 'SEO and Website Optimization', titleAllCaps: false, description: 'Professional SEO and website optimization to help your business rank higher in search results and convert more visitors into customers.', icon: 'search' },
-  { title: 'Social Media', titleAllCaps: false, description: 'What would your day/week look like if all of your posts, <strong>blogs</strong>, and comment replies were automated?', icon: 'share-2' },
+  { title: 'Social Media', titleAllCaps: false, description: 'What would your day/week look like if all of your posts, <strong>blogs</strong>, and comment replies were automated? <span class="block mt-2 text-primary font-medium">Facebook, YouTube, Instagram, X, Pinterest, TikTok</span>', icon: 'share-2' },
   { title: 'Special Boards', titleAllCaps: false, description: 'Sponsor a daily special board at a high-traffic local restaurant, event venue or entertainment complex to stay top of mind and support the <strong class="uppercase">BUY LOCAL</strong> campaign.', icon: 'layout' },
   { title: 'MEGA Magnets', titleAllCaps: false, description: 'Put your shared message on an ad that ends up in the most high-traffic room in every home—on the kitchen refrigerator for years to come.', icon: 'magnet' },
   { title: 'Custom Apparel', titleAllCaps: false, description: 'Shirts, hats, hoodies, koozies, collectibles and giveaways with your brand/logo at the best prices guaranteed.', icon: 'shirt' },
   { title: 'Printing', titleAllCaps: false, description: 'Every new customer of Myriad gets 50 free business cards, just so we can show you how easy it is for us to do your letterhead, envelopes, yard signs, banners, brochures and anything printed.', icon: 'printer' },
-  { title: 'Automation', titleAllCaps: false, description: 'What if I told you that we can easily automate up to 80% of your daily tasks?', icon: 'zap' },
+  { title: 'Automation', titleAllCaps: false, description: 'What if I told you that we can easily automate up to 80% of your daily tasks? We\'ll set up a system that runs itself for those daily tasks that eat up your working hours.', icon: 'zap' },
 ];
 
 const testimonials = [
   { quote: "We've tried Facebook ads, Google ads, everything. Nothing brings in local customers like the Community Card. Our phone rings every time it goes out!", author: 'Maria S.' },
-  { quote: "The design team made our ad look incredible. We've been on the card for 6 months now and it's become our #1 source of new clients.", author: 'James T.' },
-  { quote: "As a new salon in the area, this was perfect for getting our name out there. The value is unbeatable for the exposure we get.", author: 'Ashley M.' },
+  { quote: "At first we were skeptical. I get like 20 calls a day promising the moon. John and Megan really knocked it out of the park!", author: 'Kat G.' },
+  { quote: "It's really great having a community of like-minded local business owners to share ideas and costs. We love myriad.", author: 'Vadim F.' },
 ];
 
-const businessCategories = ['Local restaurant', 'Hair studio', 'Landscaping', 'Dental', 'Home services', 'Remodeling', 'Fitness', 'Spas', 'Real estate', 'Mortgage', 'Banking', 'Junk removal'];
+const businessGroups = [
+  {
+    name: 'Food & Dining',
+    icon: 'utensils',
+    businesses: ['Local restaurant', 'Pizza', 'Ice cream', 'Bakery', 'Coffee', 'Smoothies', 'Butcher', "Farmer's market", 'Food trucks', 'Meal prep/kits', 'Food shelf']
+  },
+  {
+    name: 'Home Services',
+    icon: 'home',
+    businesses: ['Landscaping', 'Lawn care', 'Junk removal', 'House cleaners', 'Window cleaning', 'Pest control', 'Carpet cleaning', 'Trash bin cleaning', 'Pet waste', 'Organization', 'Duct cleaning', 'Moving']
+  },
+  {
+    name: 'Health & Wellness',
+    icon: 'heart',
+    businesses: ['Dental', 'Fitness', 'Spas', 'Chiropractor', 'Massage', 'Yoga', 'Therapy', 'Mental health', 'Wellness', 'Vitamins', 'Acupuncture', 'CBD']
+  },
+  {
+    name: 'Automotive',
+    icon: 'car',
+    businesses: ['Transmissions', 'Auto repair', 'Auto dealer', 'Towing', 'Auto detailing', 'Used cars', 'Mobile mechanic', 'Tires']
+  },
+  {
+    name: 'Home Improvement',
+    icon: 'hammer',
+    businesses: ['Remodeling', 'Drywall', 'Siding', 'Tile', 'Bath remodel', 'Roofing', 'Plumbing', 'Electrician', 'HVAC', 'Garage door', 'Concrete', 'Decks', 'Fencing', 'Flooring', 'Gutters', 'Pool/spa', 'Window treatments', 'Contractor']
+  },
+  {
+    name: 'Beauty & Personal Care',
+    icon: 'scissors',
+    businesses: ['Hair studio', 'Barber', 'Beauty', 'Dry cleaning', 'Laundry']
+  },
+  {
+    name: 'Professional Services',
+    icon: 'briefcase',
+    businesses: ['Real estate', 'Mortgage', 'Banking', 'Insurance', 'Attorney', 'Taxes', 'Staffing']
+  },
+  {
+    name: 'Events & Entertainment',
+    icon: 'music',
+    businesses: ['DJ', 'Photography', 'Video services', 'Wedding', 'Events', 'Printing']
+  },
+  {
+    name: 'Kids & Pets',
+    icon: 'paw',
+    businesses: ['Childcare', 'Kids', 'Pets', 'Toys', 'Tutors', 'Gamers']
+  },
+  {
+    name: 'Retail & Shopping',
+    icon: 'shopping-bag',
+    businesses: ['Clothing', 'T-shirts', 'Screen printing', 'Jewelry', 'Novelties', 'Decor', 'Appliances']
+  },
+  {
+    name: 'Outdoor & Recreation',
+    icon: 'tree',
+    businesses: ['Golf', 'Pickleball', 'Hunting', 'Recreation', 'Bikes', 'Motorcycles', 'Trailers', 'Sheds', 'Garden center']
+  },
+  {
+    name: 'Specialty Services',
+    icon: 'wrench',
+    businesses: ['Security', 'Invisible fencing', 'Coatings', 'Lakeshore', 'Drainage', 'Irrigation', 'Home inspection', 'Radon', 'Excavation', 'Welding', 'Rentals', 'Concierge', 'Personal assistance', 'Travel agent', 'Tree removal', 'Christmas lighting', 'LP tanks', 'Non-profits', 'Retirement']
+  }
+];
 
-const serviceAreas = ['Shakopee', 'Prior Lake', 'Chaska', 'Savage', 'Chanhassen', 'Eden Prairie', 'Burnsville', 'Jordan', 'Carver', 'Victoria', 'Credit River'];
+const serviceAreas = [
+  { name: 'Shakopee', mapUrl: 'https://www.google.com/maps/place/Shakopee,+MN' },
+  { name: 'Prior Lake', mapUrl: 'https://www.google.com/maps/place/Prior+Lake,+MN' },
+  { name: 'Chaska', mapUrl: 'https://www.google.com/maps/place/Chaska,+MN' },
+  { name: 'Savage', mapUrl: 'https://www.google.com/maps/place/Savage,+MN' },
+  { name: 'Chanhassen', mapUrl: 'https://www.google.com/maps/place/Chanhassen,+MN' },
+  { name: 'Eden Prairie', mapUrl: 'https://www.google.com/maps/place/Eden+Prairie,+MN' },
+  { name: 'Burnsville', mapUrl: 'https://www.google.com/maps/place/Burnsville,+MN' },
+  { name: 'Jordan', mapUrl: 'https://www.google.com/maps/place/Jordan,+MN' },
+  { name: 'Carver', mapUrl: 'https://www.google.com/maps/place/Carver,+MN' },
+  { name: 'Victoria', mapUrl: 'https://www.google.com/maps/place/Victoria,+MN' },
+  { name: 'Credit River', mapUrl: 'https://www.google.com/maps/place/Credit+River+Township,+MN' },
+  { name: 'Belle Plaine', mapUrl: 'https://www.google.com/maps/place/Belle+Plaine,+MN' },
+  { name: 'Bloomington', mapUrl: 'https://www.google.com/maps/place/Bloomington,+MN' },
+  { name: 'Lakeville', mapUrl: 'https://www.google.com/maps/place/Lakeville,+MN' },
+  { name: 'Apple Valley', mapUrl: 'https://www.google.com/maps/place/Apple+Valley,+MN' },
+  { name: 'Rosemount', mapUrl: 'https://www.google.com/maps/place/Rosemount,+MN' },
+  { name: 'Farmington', mapUrl: 'https://www.google.com/maps/place/Farmington,+MN' },
+  { name: 'Elko', mapUrl: 'https://www.google.com/maps/place/Elko+New+Market,+MN' },
+  { name: 'New Market', mapUrl: 'https://www.google.com/maps/place/New+Market+Township,+MN' },
+  { name: 'New Prague', mapUrl: 'https://www.google.com/maps/place/New+Prague,+MN' },
+  { name: 'Waconia', mapUrl: 'https://www.google.com/maps/place/Waconia,+MN' },
+  { name: 'Cologne', mapUrl: 'https://www.google.com/maps/place/Cologne,+MN' },
+  { name: 'Norwood', mapUrl: 'https://www.google.com/maps/place/Norwood+Young+America,+MN' },
+  { name: 'Young America', mapUrl: 'https://www.google.com/maps/place/Norwood+Young+America,+MN' },
+];
 
 const faqItems = [
   { question: 'This sounds too good to be true… what\'s the catch?', answer: 'No catch—just the power of shared resources. Most agencies charge high retainers because they treat every client as a silo. By focusing on local business networks, we create "economies of scale." When you share costs for high-end automation tools and marketing campaigns with other non-competing local businesses, the individual price tag drops while the impact rises. We aren\'t magic; we\'re just efficient.' },
@@ -71,6 +164,7 @@ const customerJourneySteps = [
   { step: '02', label: 'PROSPECT', description: 'If you decide to set up a 15 minute meeting, we consider you a PROSPECTIVE customer.', icon: 'search' },
   { step: '03', label: 'CUSTOMER', description: 'If you decide to try one of our "myriad" of products/services, you become a CUSTOMER.', icon: 'shield' },
   { step: '04', label: 'CLIENT', description: "Once one of these products and our services work for you, you'll witness firsthand our extensive follow-through system (referrals, five-star reviews, networking, community).", icon: 'star' },
+  { step: '05', label: 'CHAMPION', description: "Clients start earning bonuses on referrals, leads, and expanding the myriad community.", icon: 'trophy' },
 ];
 
 // Hero carousel: photos from Myriad Photos folder (public/myriad-photos/)
@@ -133,12 +227,12 @@ const heroCarouselImages = [
           <!-- Left: copy; on mobile show first (above images) -->
           <div class="text-center lg:text-left order-1 lg:order-1">
             <div class="hero-text space-y-6 md:space-y-8">
-              <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-medium glow-border">Small Business Community</span>
+              <span class="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-bold glow-border uppercase tracking-wider">COMMUNITY</span>
               <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight text-balance">
                 Recapture your life while <span class="text-primary glow-text">growing your revenue</span>
               </h1>
               <p class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                Partner with seasoned vets and share the costs for marketing, advertising, lead generation, automation, and AI integration.
+                Partner with other local small business owners and share the costs for marketing, advertising, etc.
               </p>
               <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Sign Me Up</button></a>
@@ -197,7 +291,7 @@ const heroCarouselImages = [
       <div class="container relative">
         <div class="animate-on-scroll anim-fade-down text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">How We <span class="text-primary">Work</span></h2>
-          <p class="text-lg text-muted-foreground">We get it. Juggling everything is hard. But trusting somebody to do things for you—especially things only YOU are excellent in—is even harder.</p>
+          <p class="text-lg text-muted-foreground">We get it. Juggling everything is hard. But trusting somebody to do things for you—especially things only YOU are excellent in—is even harder. That's why our partners tell us they loved our approach to scaling their business.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {howItWorksSteps.map((item, index) => (
@@ -232,24 +326,25 @@ const heroCarouselImages = [
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">How It <span class="text-primary">Works</span></h2>
           <p class="text-lg text-muted-foreground mb-6">We believe in a process:</p>
           <p class="text-xl md:text-2xl font-semibold text-foreground tracking-wide">
-            SUSPECT <span class="text-primary mx-2">→</span> PROSPECT <span class="text-primary mx-2">→</span> CUSTOMER <span class="text-primary mx-2">→</span> CLIENT
+            SUSPECT <span class="text-primary mx-2">→</span> PROSPECT <span class="text-primary mx-2">→</span> CUSTOMER <span class="text-primary mx-2">→</span> CLIENT <span class="text-primary mx-2">→</span> <span class="text-primary font-bold">CHAMPION</span>
           </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {customerJourneySteps.map((item, index) => (
-            <div class="animate-on-scroll anim-scale-in h-full" data-stagger-delay={index * 0.15}>
-              <div class="relative p-6 md:p-8 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group h-full">
+            <div class="animate-on-scroll anim-scale-in h-full" data-stagger-delay={index * 0.12}>
+              <div class="relative p-5 md:p-6 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group h-full">
                 <div class="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground rounded-xl flex items-center justify-center font-bold text-sm shadow-glow">{item.step}</div>
                 <div class="pt-4">
-                  <div class="w-14 h-14 bg-oak/30 border border-oak-light/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300">
-                    {item.icon === 'calendar' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>}
-                    {item.icon === 'search' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>}
-                    {item.icon === 'users' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
-                    {item.icon === 'shield' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
-                    {item.icon === 'star' && <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>}
+                  <div class="w-12 h-12 bg-oak/30 border border-oak-light/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300">
+                    {item.icon === 'calendar' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>}
+                    {item.icon === 'search' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>}
+                    {item.icon === 'users' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                    {item.icon === 'shield' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+                    {item.icon === 'star' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>}
+                    {item.icon === 'trophy' && <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>}
                   </div>
-                  <h3 class="text-xl font-bold text-foreground mb-2 uppercase tracking-wide">{item.label}</h3>
-                  <p class="text-muted-foreground mb-4">{item.description}</p>
+                  <h3 class="text-lg font-bold text-foreground mb-2 uppercase tracking-wide">{item.label}</h3>
+                  <p class="text-muted-foreground text-sm">{item.description}</p>
                 </div>
               </div>
             </div>
@@ -266,54 +361,79 @@ const heroCarouselImages = [
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Simple and <span class="text-primary glow-text">Affordable</span> Pricing</h2>
           <p class="text-lg text-muted-foreground">Share the cost with other local businesses who are in the same boat.</p>
         </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.1">
-            <div class="bg-card rounded-3xl p-8 md:p-10 shadow-lg border border-oak/30 relative overflow-hidden glow-border h-full flex flex-col">
-              <div class="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier1.label}</div>
-              <div class="text-center mb-8">
+            <div class="bg-card rounded-3xl p-6 md:p-8 shadow-lg border border-border relative overflow-hidden h-full flex flex-col">
+              <div class="absolute top-0 right-0 bg-oak/40 text-foreground border border-oak-light/40 px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier1.label}</div>
+              <div class="text-center mb-6 pt-4">
                 <p class="text-muted-foreground mb-2">Starting at</p>
                 <div class="flex items-baseline justify-center gap-1">
-                  <span class="text-5xl md:text-6xl font-display font-bold text-primary glow-text">{pricingTier1.price}</span>
+                  <span class="text-4xl md:text-5xl font-display font-bold text-primary">{pricingTier1.price}</span>
                   <span class="text-muted-foreground"> {pricingTier1.period}</span>
                 </div>
               </div>
-              <ul class="space-y-4 mb-8 flex-1">
+              <ul class="space-y-3 mb-6 flex-1">
                 {pricingTier1.features.map((feature) => (
                   <li class="flex items-start gap-3">
                     <div class="w-5 h-5 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="w-3 h-3 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
-                    <span class="text-foreground">{feature}</span>
+                    <span class="text-foreground text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
               <a href={CALENDAR_URL} class="block">
-                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule NOW</button>
+                <button type="button" class="w-full inline-flex items-center justify-center h-12 rounded-xl px-6 text-base font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Get Started</button>
               </a>
             </div>
           </div>
-          <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.2">
-            <div class="bg-card rounded-3xl p-8 md:p-10 shadow-lg border border-border relative overflow-hidden h-full flex flex-col">
+          <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.15">
+            <div class="bg-card rounded-3xl p-6 md:p-8 shadow-lg border border-border relative overflow-hidden h-full flex flex-col">
               <div class="absolute top-0 right-0 bg-oak/40 text-foreground border border-oak-light/40 px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier2.label}</div>
-              <div class="text-center mb-8">
+              <div class="text-center mb-6 pt-4">
                 <p class="text-muted-foreground mb-2">Starting at</p>
                 <div class="flex items-baseline justify-center gap-1">
-                  <span class="text-5xl md:text-6xl font-display font-bold text-primary">{pricingTier2.price}</span>
+                  <span class="text-4xl md:text-5xl font-display font-bold text-primary">{pricingTier2.price}</span>
                   <span class="text-muted-foreground"> {pricingTier2.period}</span>
                 </div>
               </div>
-              <ul class="space-y-4 mb-8 flex-1">
+              <ul class="space-y-3 mb-6 flex-1">
                 {pricingTier2.features.map((feature) => (
                   <li class="flex items-start gap-3">
                     <div class="w-5 h-5 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg class="w-3 h-3 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
-                    <span class="text-foreground">{feature}</span>
+                    <span class="text-foreground text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
               <a href={CALENDAR_URL} class="block">
-                <button type="button" class="w-full inline-flex items-center justify-center h-14 rounded-xl px-8 text-lg font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule NOW</button>
+                <button type="button" class="w-full inline-flex items-center justify-center h-12 rounded-xl px-6 text-base font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Get Started</button>
+              </a>
+            </div>
+          </div>
+          <div class="animate-on-scroll anim-scale-in" data-stagger-delay="0.2">
+            <div class="bg-card rounded-3xl p-6 md:p-8 shadow-lg border border-primary/30 relative overflow-hidden glow-border h-full flex flex-col">
+              <div class="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-2 rounded-bl-2xl text-sm font-semibold">{pricingTier3.label}</div>
+              <div class="text-center mb-6 pt-4">
+                <p class="text-muted-foreground mb-2">Starting at</p>
+                <div class="flex items-baseline justify-center gap-1">
+                  <span class="text-4xl md:text-5xl font-display font-bold text-primary glow-text">{pricingTier3.price}</span>
+                  <span class="text-muted-foreground"> {pricingTier3.period}</span>
+                </div>
+              </div>
+              <ul class="space-y-3 mb-6 flex-1">
+                {pricingTier3.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                    </div>
+                    <span class="text-foreground text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={CALENDAR_URL} class="block">
+                <button type="button" class="w-full inline-flex items-center justify-center h-12 rounded-xl px-6 text-base font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Get Started</button>
               </a>
             </div>
           </div>
@@ -326,7 +446,7 @@ const heroCarouselImages = [
       <div class="container">
         <div class="animate-on-scroll anim-fade-left text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Why It <span class="text-primary">Works</span></h2>
-          <p class="text-lg text-muted-foreground">Built specifically for small business owners who want a real local community of like-minded people who have struggled with balancing work and life.</p>
+          <p class="text-lg text-muted-foreground">Built specifically for small business owners who want a real local community of like-minded people who have struggled with balancing work with life. We share costs, pool our resources, and get the <strong class="text-primary">BEST</strong> deals on marketing, advertising, lead generation, automation, AI integration, and a host of other things all of our businesses need.</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6">
           {featureCards.map((card, index) => (
@@ -355,7 +475,26 @@ const heroCarouselImages = [
                     card.titleAllCaps ? card.title.toUpperCase() : card.title
                   )}
                 </h3>
-                <p class="text-muted-foreground text-sm leading-relaxed" set:html={card.description} />
+                {card.isGeofencing ? (
+                  <div>
+                    <div class="geo-search-box">
+                      <span class="geo-search-icon">🔍</span>
+                      <div class="geo-flipper" id="geo-flipper">
+                        <span class="geo-term active">Restaurant near me</span>
+                        <span class="geo-term">Hairdresser near me</span>
+                        <span class="geo-term">Repair near me</span>
+                        <span class="geo-term">Pizza delivery near me</span>
+                        <span class="geo-term">Coffee shop near me</span>
+                        <span class="geo-term">Dentist near me</span>
+                        <span class="geo-term">Gym near me</span>
+                        <span class="geo-term">Plumber near me</span>
+                      </div>
+                    </div>
+                    <p class="text-muted-foreground text-xs mt-3">Make sure your business is at the top when customers search locally.</p>
+                  </div>
+                ) : (
+                  <p class="text-muted-foreground text-sm leading-relaxed" set:html={card.description} />
+                )}
                 {card.linkUrl && (
                   <a href={card.linkUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-semibold text-primary hover:underline">Learn more →</a>
                 )}
@@ -395,7 +534,7 @@ const heroCarouselImages = [
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Trusted by <span class="text-primary">Local Businesses</span></h2>
           <p class="text-lg text-muted-foreground">See what our advertiser community has to say</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((t, index) => (
             <div class="animate-on-scroll anim-slide-left h-full" data-stagger-delay={index * 0.15}>
               <div class="p-6 md:p-8 bg-card rounded-2xl border border-oak/30 hover:border-primary/30 transition-all duration-300 h-full">
@@ -408,12 +547,6 @@ const heroCarouselImages = [
             </div>
           ))}
         </div>
-        <div class="animate-on-scroll anim-scale-in flex flex-wrap justify-center gap-6" data-stagger-delay="0.3">
-          <div class="w-32 h-32 bg-oak/20 border border-oak-light/30 rounded-xl flex items-center justify-center"><img src="/community-postcard-front.jpg" alt="Postcard example" class="w-full h-full object-cover rounded-xl" /></div>
-          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 2</div>
-          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 3</div>
-          <div class="w-32 h-32 bg-oak/20 border border-dashed border-oak-light/50 rounded-xl flex items-center justify-center text-muted-foreground text-xs text-center px-2">Testimonial image 4</div>
-        </div>
       </div>
     </section>
 
@@ -424,12 +557,47 @@ const heroCarouselImages = [
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Proudly Supporting <span class="text-primary">Businesses</span></h2>
           <p class="text-muted-foreground text-sm md:text-base">If your customers are in your community, we can help you reach them</p>
         </div>
-        <div class="flex flex-wrap justify-center gap-2 md:gap-3">
-          {businessCategories.map((name, index) => (
-            <div class="animate-on-scroll anim-pop-in" data-stagger-delay={index * 0.04}>
-              <span class="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-background rounded-full text-sm font-medium text-foreground border border-border hover:border-primary/50 hover:text-primary transition-colors">{name}</span>
-            </div>
+        <div id="business-groups" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {businessGroups.map((group, index) => (
+            <button
+              type="button"
+              class="business-group-card animate-on-scroll anim-pop-in p-4 md:p-6 bg-background rounded-2xl border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-300 text-left group cursor-pointer"
+              data-stagger-delay={index * 0.08}
+              data-group-index={index}
+              aria-expanded="false"
+            >
+              <div class="w-10 h-10 md:w-12 md:h-12 bg-oak/40 border border-oak-light/40 rounded-xl flex items-center justify-center mb-3 group-hover:border-primary/50 transition-colors">
+                {group.icon === 'utensils' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>}
+                {group.icon === 'home' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>}
+                {group.icon === 'heart' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>}
+                {group.icon === 'car' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>}
+                {group.icon === 'hammer' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg>}
+                {group.icon === 'scissors' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>}
+                {group.icon === 'briefcase' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>}
+                {group.icon === 'music' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>}
+                {group.icon === 'paw' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg>}
+                {group.icon === 'shopping-bag' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>}
+                {group.icon === 'tree' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20a7 7 0 0 1-7-7 5 5 0 0 1 5-5 4 4 0 0 1 8 0 5 5 0 0 1 5 5 7 7 0 0 1-7 7Z"/><path d="M12 20v2"/></svg>}
+                {group.icon === 'wrench' && <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>}
+              </div>
+              <h3 class="text-sm md:text-base font-bold text-foreground mb-1 group-hover:text-primary transition-colors">{group.name}</h3>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-muted-foreground">{group.businesses.length} industries</span>
+                <svg class="w-4 h-4 text-muted-foreground group-hover:text-primary transition-all duration-300 group-card-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </button>
           ))}
+        </div>
+        <div id="business-group-expanded" class="business-group-expanded mt-6 hidden" aria-hidden="true">
+          <div class="p-6 bg-background rounded-2xl border border-primary/30">
+            <div class="flex items-center justify-between mb-4">
+              <h4 id="expanded-group-title" class="text-lg font-bold text-primary"></h4>
+              <button type="button" id="close-expanded-group" class="p-2 rounded-lg hover:bg-card transition-colors" aria-label="Close">
+                <svg class="w-5 h-5 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div id="expanded-group-businesses" class="flex flex-wrap gap-2"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -442,15 +610,15 @@ const heroCarouselImages = [
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Areas We <span class="text-primary glow-text">Serve</span></h2>
           <p class="text-lg text-muted-foreground">Myriad reaches homes across these thriving Minnesota communities</p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
           {serviceAreas.map((area, index) => (
-            <div class="animate-on-scroll anim-scale-in" data-stagger-delay={index * 0.06}>
-              <div class="p-4 md:p-6 bg-card rounded-2xl text-center border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group">
-                <div class="w-10 h-10 bg-primary/20 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                  <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="animate-on-scroll anim-scale-in" data-stagger-delay={index * 0.03}>
+              <a href={area.mapUrl} target="_blank" rel="noopener noreferrer" class="block p-3 md:p-4 bg-card rounded-xl text-center border border-border hover:border-primary/50 hover:shadow-glow transition-all duration-500 group cursor-pointer">
+                <div class="w-8 h-8 bg-primary/20 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <p class="font-medium text-foreground text-sm md:text-base group-hover:text-primary transition-colors">{area}</p>
-              </div>
+                <p class="font-medium text-foreground text-xs md:text-sm group-hover:text-primary transition-colors">{area.name}</p>
+              </a>
             </div>
           ))}
         </div>
@@ -466,7 +634,7 @@ const heroCarouselImages = [
       <div class="container relative">
         <div class="animate-on-scroll anim-fade-left text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">Frequently Asked <span class="text-primary">Questions</span></h2>
-          <p class="text-lg text-muted-foreground">Common questions about Myriad and our community</p>
+          <p class="text-lg text-muted-foreground">Common questions about the myriad community of business owners</p>
         </div>
         <div class="animate-on-scroll anim-fade-right max-w-3xl mx-auto" data-stagger-delay="0.2">
           <Accordion items={faqItems} />
@@ -582,7 +750,7 @@ const heroCarouselImages = [
       <div class="absolute inset-0 gradient-glow" />
       <div class="animate-on-scroll anim-scale-in container relative text-center">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">Start Reaching Your <span class="text-primary glow-text">Neighbors</span> Today</h2>
-        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">We can only take on six clients per year, so that we can focus on the time and energy into making this work for you.</p>
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">Join our community of local business owners and start growing your business with shared resources and proven strategies.</p>
         <a href={CALENDAR_URL}><button type="button" class="inline-flex items-center justify-center h-16 rounded-xl px-10 text-xl font-semibold bg-primary text-primary-foreground border border-primary/50 shadow-glow hover:shadow-lg hover:-translate-y-1 transition-all">Schedule Now</button></a>
       </div>
     </section>
@@ -643,6 +811,54 @@ const heroCarouselImages = [
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
     }
+    /* Geofencing flip animation */
+    .geo-search-box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: hsl(var(--card) / 0.5);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: 0.5rem;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .geo-search-icon {
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+    .geo-flipper {
+      position: relative;
+      height: 1.25rem;
+      flex: 1;
+      overflow: hidden;
+      perspective: 300px;
+    }
+    .geo-term {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      font-size: 0.8rem;
+      color: hsl(var(--muted-foreground));
+      font-style: italic;
+      white-space: nowrap;
+      opacity: 0;
+      transform: rotateX(-90deg) translateY(-100%);
+      transform-origin: top center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      backface-visibility: hidden;
+    }
+    .geo-term.active {
+      opacity: 1;
+      transform: rotateX(0deg) translateY(0);
+    }
+    .geo-term.exit {
+      opacity: 0;
+      transform: rotateX(90deg) translateY(100%);
+      transform-origin: bottom center;
+    }
     /* Hero: horizontal stack – 3 cards with depth; left/right recessed and tilted */
     .hero-carousel-horizontal { position: relative; perspective: 1200px; transform-style: preserve-3d; }
     .hero-carousel-horizontal .hero-slide {
@@ -692,6 +908,26 @@ const heroCarouselImages = [
     .hero-dot:hover { border-color: hsl(var(--primary)); background: hsl(var(--primary) / 0.3); transform: scale(1.2); }
     .hero-dot[aria-current="true"] { background: hsl(var(--primary)); border-color: hsl(var(--primary)); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    
+    /* Business Groups expand/collapse */
+    .business-group-card { position: relative; }
+    .business-group-card-active { 
+      border-color: hsl(var(--primary) / 0.5);
+      background: hsl(var(--primary) / 0.05);
+    }
+    .business-group-card-active .group-card-chevron {
+      transform: rotate(180deg);
+      color: hsl(var(--primary));
+    }
+    .business-group-expanded {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .business-group-expanded-open {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <script>
@@ -740,6 +976,117 @@ const heroCarouselImages = [
         dot.addEventListener('click', function () { goTo(i); });
       });
       setInterval(function () { goTo(currentIndex + 1); }, ADVANCE_MS);
+    })();
+
+    // Geofencing billboard flip animation
+    (function geoFlipper() {
+      var flipper = document.getElementById('geo-flipper');
+      if (!flipper) return;
+      var terms = Array.prototype.slice.call(flipper.querySelectorAll('.geo-term'));
+      var total = terms.length;
+      if (total === 0) return;
+      var currentIndex = 0;
+      var FLIP_MS = 2500;
+
+      function flip() {
+        var current = terms[currentIndex];
+        var nextIndex = (currentIndex + 1) % total;
+        var next = terms[nextIndex];
+        
+        current.classList.remove('active');
+        current.classList.add('exit');
+        
+        setTimeout(function() {
+          current.classList.remove('exit');
+        }, 400);
+        
+        next.classList.add('active');
+        currentIndex = nextIndex;
+      }
+
+      setInterval(flip, FLIP_MS);
+    })();
+
+    // Business Groups expand/collapse
+    (function businessGroupsExpand() {
+      var businessGroupsData = [
+        { name: 'Food & Dining', businesses: ['Local restaurant', 'Pizza', 'Ice cream', 'Bakery', 'Coffee', 'Smoothies', 'Butcher', "Farmer's market", 'Food trucks', 'Meal prep/kits', 'Food shelf'] },
+        { name: 'Home Services', businesses: ['Landscaping', 'Lawn care', 'Junk removal', 'House cleaners', 'Window cleaning', 'Pest control', 'Carpet cleaning', 'Trash bin cleaning', 'Pet waste', 'Organization', 'Duct cleaning', 'Moving'] },
+        { name: 'Health & Wellness', businesses: ['Dental', 'Fitness', 'Spas', 'Chiropractor', 'Massage', 'Yoga', 'Therapy', 'Mental health', 'Wellness', 'Vitamins', 'Acupuncture', 'CBD'] },
+        { name: 'Automotive', businesses: ['Transmissions', 'Auto repair', 'Auto dealer', 'Towing', 'Auto detailing', 'Used cars', 'Mobile mechanic', 'Tires'] },
+        { name: 'Home Improvement', businesses: ['Remodeling', 'Drywall', 'Siding', 'Tile', 'Bath remodel', 'Roofing', 'Plumbing', 'Electrician', 'HVAC', 'Garage door', 'Concrete', 'Decks', 'Fencing', 'Flooring', 'Gutters', 'Pool/spa', 'Window treatments', 'Contractor'] },
+        { name: 'Beauty & Personal Care', businesses: ['Hair studio', 'Barber', 'Beauty', 'Dry cleaning', 'Laundry'] },
+        { name: 'Professional Services', businesses: ['Real estate', 'Mortgage', 'Banking', 'Insurance', 'Attorney', 'Taxes', 'Staffing'] },
+        { name: 'Events & Entertainment', businesses: ['DJ', 'Photography', 'Video services', 'Wedding', 'Events', 'Printing'] },
+        { name: 'Kids & Pets', businesses: ['Childcare', 'Kids', 'Pets', 'Toys', 'Tutors', 'Gamers'] },
+        { name: 'Retail & Shopping', businesses: ['Clothing', 'T-shirts', 'Screen printing', 'Jewelry', 'Novelties', 'Decor', 'Appliances'] },
+        { name: 'Outdoor & Recreation', businesses: ['Golf', 'Pickleball', 'Hunting', 'Recreation', 'Bikes', 'Motorcycles', 'Trailers', 'Sheds', 'Garden center'] },
+        { name: 'Specialty Services', businesses: ['Security', 'Invisible fencing', 'Coatings', 'Lakeshore', 'Drainage', 'Irrigation', 'Home inspection', 'Radon', 'Excavation', 'Welding', 'Rentals', 'Concierge', 'Personal assistance', 'Travel agent', 'Tree removal', 'Christmas lighting', 'LP tanks', 'Non-profits', 'Retirement'] }
+      ];
+
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.business-group-card'));
+      var expandedPanel = document.getElementById('business-group-expanded');
+      var expandedTitle = document.getElementById('expanded-group-title');
+      var expandedBusinesses = document.getElementById('expanded-group-businesses');
+      var closeBtn = document.getElementById('close-expanded-group');
+      var currentOpenIndex = -1;
+
+      if (!expandedPanel || !expandedTitle || !expandedBusinesses || !closeBtn) return;
+
+      function closePanel() {
+        expandedPanel.classList.add('hidden');
+        expandedPanel.classList.remove('business-group-expanded-open');
+        expandedPanel.setAttribute('aria-hidden', 'true');
+        cards.forEach(function(card) {
+          card.setAttribute('aria-expanded', 'false');
+          card.classList.remove('business-group-card-active');
+        });
+        currentOpenIndex = -1;
+      }
+
+      function openGroup(index) {
+        var group = businessGroupsData[index];
+        if (!group) return;
+
+        if (currentOpenIndex === index) {
+          closePanel();
+          return;
+        }
+
+        expandedTitle.textContent = group.name;
+        expandedBusinesses.innerHTML = group.businesses.map(function(biz) {
+          return '<span class="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-card rounded-full text-sm font-medium text-foreground border border-border">' + biz + '</span>';
+        }).join('');
+
+        expandedPanel.classList.remove('hidden');
+        expandedPanel.setAttribute('aria-hidden', 'false');
+        
+        setTimeout(function() {
+          expandedPanel.classList.add('business-group-expanded-open');
+        }, 10);
+
+        cards.forEach(function(card, i) {
+          if (i === index) {
+            card.setAttribute('aria-expanded', 'true');
+            card.classList.add('business-group-card-active');
+          } else {
+            card.setAttribute('aria-expanded', 'false');
+            card.classList.remove('business-group-card-active');
+          }
+        });
+
+        currentOpenIndex = index;
+
+        expandedPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      cards.forEach(function(card, index) {
+        card.addEventListener('click', function() {
+          openGroup(index);
+        });
+      });
+
+      closeBtn.addEventListener('click', closePanel);
     })();
   </script>
 </Layout>
